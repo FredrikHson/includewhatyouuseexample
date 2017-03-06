@@ -40,22 +40,19 @@ verifybuildtype: build/Makefile
 		fi
 
 debug:
+	$(MAKE) -C "build" clean
 	$(MAKE) verifybuildtype DEBUG=1
 	$(MAKE) build DEBUG=1
 
 release:
+	$(MAKE) -C "build" clean
 	$(MAKE) verifybuildtype RELEASE=1
 	$(MAKE) build RELEASE=1
 
 release_dbg_info:
+	$(MAKE) -C "build" clean
 	$(MAKE) verifybuildtype RELEASE_DBG_INFO=1
 	$(MAKE) build RELEASE_DBG_INFO=1
-
-install: build
-	$(MAKE) -C build install
-
-uninstall: build/install_manifest.txt
-	$(MAKE) -C build uninstall
 
 clean:
 	$(MAKE) -C "build" clean
